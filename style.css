@@ -933,11 +933,42 @@ footer {
 
 /* ===== ABOUT PAGE STYLES ===== */
 
-.about-section {
+/* Page Section Spacers for Fixed Navbar */
+.about-section,
+.contact-page {
+  padding: 130px 40px 60px;
+  max-width: 1000px;
+  margin: auto;
+  color: #E5E7EB;
+}
+
+.events-section {
   max-width: 1100px;
   margin: auto;
-  padding: 80px 20px;
-  color: #e5e7eb;
+  padding: 130px 20px;
+  color: #E5E7EB;
+}
+
+.projects-section {
+  padding: 130px 40px;
+  max-width: 1200px;
+  margin: auto;
+  color: #E5E7EB;
+}
+
+.team-section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 130px 20px;
+  color: #E5E7EB;
+}
+
+.news-section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 160px 20px;
+  /* Extra space for News page */
+  color: #E5E7EB;
 }
 
 .page-title {
