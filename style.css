@@ -966,8 +966,7 @@ footer {
 .news-section {
   max-width: 1100px;
   margin: auto;
-  padding: 160px 20px;
-  /* Extra space for News page */
+  padding: 130px 20px;
   color: #E5E7EB;
 }
 
