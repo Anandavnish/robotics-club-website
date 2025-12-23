@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events | Robotics Club</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== EVENTS PAGE STYLES ===== */
+
+    .events-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+      color: #E5E7EB;
+    }
+
+    .events-header {
+      text-align: center;
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .events-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .sort-controls {
+      margin: 30px auto;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .sort-controls select {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: var(--bg-panel);
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .event-card,
+    .ongoing-card {
+      background: var(--bg-panel);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.15);
+    }
+
+    .event-card h3,
+    .ongoing-card h3 {
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .event-meta {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .event-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .register-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: var(--primary);
+      color: #020617;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+   .register-btn {
+  background: #06b7fd ;   /* dark blue */
+  color: #ffffff;        /* white text */
+}
+
+.register-btn:hover {
+  background: #02d7fd;
+  color: #ffffff;  
+}
+
+    
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111827;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      font-size: 0.95rem;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+   .gallery-caption {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  background: rgba(2, 6, 23, 0.75);   /* dark box */
+  padding: 6px 10px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.6);
+
+}
+
+
+    .section-title {
+  color: #06b7fd;
+}
+.section-title {
+  color: #02d7fd;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+/* Match dropdown style with Projects section */
+
+.sort-controls select {
+  background: #020617;                 /* dark theme background */
+  color: #ffffff;                      /* white text */
+  border: 1.5px solid #38bdf8;          /* cyan/blue border */
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+}
+
+/* Dropdown options */
+.sort-controls select option {
+  background: #020617;
+  color: #ffffff;
+}
+
+/* Hover & focus (same theme feel) */
+.sort-controls select:hover,
+.sort-controls select:focus {
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.45);
+  border-color: #60a5fa;
+}
+
+ </style>
+</head>
+
+<body>
+
+<section class="events-section">
+
+  <h1 class="events-header">Events</h1>
+  <p class="events-subtitle">Upcoming, Ongoing & Past Robotics Events</p>
+
+  <!-- SORT CONTROLS -->
+  <div class="sort-controls">
+    <select id="sortByDate">
+      <option value="none">Sort by Date</option>
+      <option value="asc">Earliest First</option>
+      <option value="desc">Latest First</option>
+    </select>
+
+    <select id="sortByName">
+      <option value="none">Sort by Name</option>
+      <option value="az">A → Z</option>
+      <option value="za">Z → A</option>
+    </select>
+  </div>
+
+  <!-- UPCOMING EVENTS -->
+  <div class="upcoming-events">
+    <h2 class="section-title">Upcoming Events</h2>
+ <div class="event-card" data-date="2025-01-15" data-name="Autonomous Bot Challenge">
+      <h3>Autonomous Bot Challenge</h3>
+      <div class="event-meta">
+        <strong>Date:</strong> 15 Jan 2025 |
+        <strong>Time:</strong> 10:00 AM |
+        <strong>Venue:</strong> Robotics Lab
+      </div>
+      <p class="event-desc">
+        A challenge to design robots that navigate a maze autonomously.
+      </p>
+      <a href="#" class="register-btn">Register Interest</a>
+    </div>
+
+    <div class="event-card" data-date="2025-02-20" data-name="AI in Robotics Workshop">
+      <h3>AI in Robotics Workshop</h3>
+      <div class="event-meta">
+        <strong>Date:</strong> 20 Feb 2025 |
+        <strong>Time:</strong> 11:00 AM |
+        <strong>Venue:</strong> Lecture Hall
+      </div>
+      <p class="event-desc">
+        Learn how AI algorithms power modern autonomous systems.
+      </p>
+      <a href="#" class="register-btn">Register Interest</a>
+    </div>
+
+    <div class="event-card" data-date="2025-03-05" data-name="Drone Coding Bootcamp">
+      <h3>Drone Coding Bootcamp</h3>
+      <div class="event-meta">
+        <strong>Date:</strong> 05 Mar 2025 |
+        <strong>Time:</strong> 09:00 AM |
+        <strong>Venue:</strong> Workshop Arena
+      </div>
+      <p class="event-desc">
+        Hands-on coding sessions to build and fly autonomous drones.
+      </p>
+      <a href="#" class="register-btn">Register Interest</a>
+    </div>
+  </div>
+
+  <!-- ONGOING EVENTS -->
+  <div class="ongoing-events">
+    
+
+    <h2 class="section-title">Ongoing Projects</h2>
+
+
+    <div class="ongoing-card">
+      <h3>Self-Balancing Robot</h3>
+      <div class="event-meta">Developing a robot that balances using feedback control</div>
+    </div>
+
+    <div class="ongoing-card">
+      <h3>Smart IoT Rover</h3>
+      <div class="event-meta">Integrated IoT rover for environment monitoring</div>
+    </div>
+
+    <div class="ongoing-card">
+      <h3>Robotic Arm Vision System</h3>
+      <div class="event-meta">Computer vision system for pick-and-place accuracy</div>
+    </div>
+  </div>
+
+  <!-- PAST EVENTS / GALLERY -->
+  <div class="past-events">
+    <h2 class="section-title">Past Events Gallery</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="https://www.norwegiancreations.com/wp-content/uploads/2015/06/DSCF6569-1140x641.jpg">
+       <h1> <div class="gallery-caption">Workshop – July 2024</div>
+      </div></h1>
+      <div class="gallery-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.Hu5HD6w2iROAe6MHmBRn5gHaE8?cb=ucfimg2&ucfimg=1&w=1024&h=683&rs=1&pid=ImgDetMain&o=7&rm=3">
+       <h1> <div class="gallery-caption">Competition – Dec 2024</div>
+      </div></h1>
+      <div class="gallery-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.ie9gqTmUSHoep324QFsYmQHaDL?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3">
+        <h1><div class="gallery-caption">Guest Lecture – Nov 2024</div>
+      </div></h1>
+      <div class="gallery-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.DrSS7HRukyhXfhlVkdYL6wHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3">
+        <h1><div class="gallery-caption">Workshop – Mar 2024</div></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-home" style="text-align: center; margin-top: 40px;">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+</section>
+
+<script>
+  // EVENT SORTING SCRIPT
+  const sortByDate = document.getElementById("sortByDate");
+  const sortByName = document.getElementById("sortByName");
+
+  sortByDate.addEventListener("change", () => {
+    sortEvents("date", sortByDate.value);
+    sortByName.value = "none";
+  });
+
+  sortByName.addEventListener("change", () => {
+    sortEvents("name", sortByName.value);
+    sortByDate.value = "none";
+  });
+
+  function sortEvents(type, order) {
+    const cards = [...document.querySelectorAll(".upcoming-events .event-card")];
+    cards.sort((a, b) => {
+      if (type === "date") {
+        return (order === "asc") ? new Date(a.dataset.date) - new Date(b.dataset.date) : new Date(b.dataset.date) - new Date(a.dataset.date);
+      } else {
+        return (order === "az") ? a.dataset.name.localeCompare(b.dataset.name) : b.dataset.name.localeCompare(a.dataset.name);
+      }
+    });
+    cards.forEach(card => document.querySelector(".upcoming-events").appendChild(card));
+  }
+</script>
+
+</body>
+</html>

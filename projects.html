@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects | Robotics Club</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* PROJECTS PAGE STYLES */
+    .projects-section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: auto;
+      color: #E5E7EB;
+    }
+
+    .projects-title {
+      text-align: center;
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .projects-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    /* FILTERS */
+    .filter-controls {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .filter-controls select {
+      padding: 10px 16px;
+      margin: 0 6px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background: var(--bg-panel);
+      color: var(--text-main);
+    }
+
+    /* GRID */
+    .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+
+    .project-card {
+      background: var(--bg-panel);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 24px rgba(56,189,248,0.15);
+      cursor: pointer;
+      transition: transform .3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px rgba(56,189,248,0.25);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 160px;
+      background: #111827;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 14px 18px;
+    }
+    .project-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+    .project-info .meta {
+      font-size: .9rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .project-info p {
+      font-size: .98rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .project-info .tech {
+      font-size: .9rem;
+      color: #90caf9;
+      margin-bottom: 4px;
+    }
+    .project-info .team {
+      font-size: .85rem;
+      color: #94a3b8;
+    }
+
+    /* POPUP MODAL */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .modal-card {
+      background: var(--bg-main);
+      padding: 24px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 580px;
+      color: var(--text-main);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    .modal-close {
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+    }
+    .modal-body img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .modal-body p, .modal-body .modal-tech, .modal-body .modal-team {
+      margin: 8px 0;
+      font-size: .95rem;
+    }
+    /* ===== PROJECTS HEADING COLOR UPGRADE ===== */
+
+.projects-title {
+  background: linear-gradient(90deg, #38bdf8, #60a5fa, #0ea5e9);
+  
+  -webkit-text-fill-color: transparent;
+}
+
+.project-info h3 {
+  color: #38bdf8;
+}
+
+.project-info .meta {
+  color: #94a3b8;
+}
+
+/* Make "Our Projects" heading white like About Us */
+.projects-title {
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: unset;
+}
+
+/* ===== FILTER BAR STYLE UPGRADE ONLY ===== */
+
+/* Subtitle text */
+.projects-subtitle {
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  color: #cbd5e1;
+}
+
+/* Filter container */
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 14px;
+  width: fit-content;
+  margin: 0 auto 40px;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+/* Dropdowns */
+.filter-controls select {
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #38bdf8;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-controls select:hover {
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+  </style>
+</head>
+<body>
+
+<section class="projects-section">
+
+  <h1 class="projects-title">Our Projects</h1>
+  <p class="projects-subtitle">Browse past work by year and type</p>
+
+  <!-- FILTER CONTROLS -->
+  <div class="filter-controls">
+    <select id="filterYear">
+      <option value="all">All Years</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+    </select>
+
+    <select id="filterType">
+      <option value="all">All Types</option>
+      <option value="Drone">Drone</option>
+      <option value="Robotic Arm">Robotic Arm</option>
+      <option value="AI">AI</option>
+      <option value="IoT">IoT</option>
+    </select>
+  </div>
+
+  <!-- PROJECT GRID -->
+  <div class="projects-grid" id="projectsGrid">
+
+    <!-- PROJECT CARD EXAMPLES -->
+    <div class="project-card" data-year="2025" data-type="AI">
+      <img src="https://community.cadence.com/resized-image/__size/1280x960/__key/communityserver-blogs-components-weblogfiles/00-00-00-00-14/5861.Car.JPG" class="project-img">
+      <div class="project-info">
+        <h3>Smart Navigation AI</h3>
+        <div class="meta">2025 • AI</div>
+        <p>Autonomous navigation system using deep learning for real-time obstacle avoidance and path optimization.</p>
+        <div class="tech"><strong>Tech:</strong> Python, ROS, TensorFlow</div>
+        <div class="team"><strong>Team:</strong> Alice, Bob</div>
+      </div>
+    </div>
+
+    <div class="project-card" data-year="2024" data-type="Drone">
+      <img src="https://img.freepik.com/premium-photo/photo-advanced-drone-technology-flight_933496-41555.jpg?w=996" class="project-img">
+      <div class="project-info">
+        <h3>Autonomous Drone Explorer</h3>
+        <div class="meta">2024 • Drone</div>
+        <p>Quadcopter platform with precision GPS and sensor fusion for autonomous survey missions over uncharted terrain.</p>
+        <div class="tech"><strong>Tech:</strong> C++, PX4, GPS</div>
+        <div class="team"><strong>Team:</strong> Carlos, Diana</div>
+      </div>
+    </div>
+
+    <div class="project-card" data-year="2023" data-type="Robotic Arm">
+      <img src="https://i.pinimg.com/originals/e8/c0/d7/e8c0d7fba6aa12ba9fc682afae585c26.jpg" class="project-img">
+      <div class="project-info">
+        <h3>Precision Robotic Arm</h3>
+        <div class="meta">2023 • Robotic Arm</div>
+        <p>High-precision robotic arm for industrial pick-and-place operations with vision-assisted accuracy.</p>
+        <div class="tech"><strong>Tech:</strong> Arduino, Servo Motors, OpenCV</div>
+        <div class="team"><strong>Team:</strong> Eva, Frank</div>
+      </div>
+    </div>
+
+    <div class="project-card" data-year="2024" data-type="IoT">
+      <img src="https://www.allieddigital.net/in/wp-content/uploads/2023/07/FutureofSmart.jpg.webp" class="project-img">
+      <div class="project-info">
+        <h3>Smart IoT Sensor Network</h3>
+        <div class="meta">2024 • IoT</div>
+        <p>Distributed sensor network for environmental monitoring with cloud data analytics and real-time dashboards.</p>
+        <div class="tech"><strong>Tech:</strong> NodeMCU, MQTT, Firebase</div>
+        <div class="team"><strong>Team:</strong> Grace, Henry</div>
+      </div>
+    </div>
+
+    <div class="project-card" data-year="2025" data-type="AI">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.PdteS_wOzikBpylTu3zs6gHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" class="project-img">
+      <div class="project-info">
+        <h3>Vision-Based Object Tracker</h3>
+        <div class="meta">2025 • AI</div>
+        <p>Real-time computer vision system that tracks moving objects and identifies patterns using CNN models.</p>
+        <div class="tech"><strong>Tech:</strong> Python, OpenCV, PyTorch</div>
+        <div class="team"><strong>Team:</strong> Ivy, Jack</div>
+      </div>
+    </div>
+
+    <div class="project-card" data-year="2023" data-type="Drone">
+      <img src="https://thumbs.dreamstime.com/b/drone-racing-competition-urban-cityscape-action-photography-nighttime-aerial-view-speed-372947650.jpg" class="project-img">
+      <div class="project-info">
+        <h3>Competition Racing Drone</h3>
+        <div class="meta">2023 • Drone</div>
+        <p>High-speed drone designed for agility racing with optimized frame and aerodynamic tuning.</p>
+        <div class="tech"><strong>Tech:</strong> Carbon Frame, Betaflight, Brushless Motors</div>
+        <div class="team"><strong>Team:</strong> Kate, Leo</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="back-home" style="text-align: center; margin-top: 40px;">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+</section>
+
+<!-- MODAL POPUP -->
+<div class="modal-bg" id="projectModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h2 id="modalTitle">Project Title</h2>
+      <span class="modal-close" onclick="closeModal()">✖</span>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <img src="" id="modalImg">
+      <p id="modalDesc"></p>
+      <p class="modal-tech" id="modalTech"></p>
+      <p class="modal-team" id="modalTeam"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // FILTERING
+  const yearFilter = document.getElementById("filterYear");
+  const typeFilter = document.getElementById("filterType");
+  const projectsGrid = document.getElementById("projectsGrid");
+
+  function filterProjects() {
+    const y = yearFilter.value;
+    const t = typeFilter.value;
+    const cards = projectsGrid.querySelectorAll(".project-card");
+    cards.forEach(card => {
+      const yearMatch = (y === "all" || card.dataset.year === y);
+      const typeMatch = (t === "all" || card.dataset.type === t);
+      card.style.display = (yearMatch && typeMatch) ? "block" : "none";
+    });
+  }
+
+  yearFilter.addEventListener("change", filterProjects);
+  typeFilter.addEventListener("change", filterProjects);
+
+  // MODAL POPUP
+  const modal = document.getElementById("projectModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImg = document.getElementById("modalImg");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalTech = document.getElementById("modalTech");
+  const modalTeam = document.getElementById("modalTeam");
+
+  projectsGrid.addEventListener("click", e => {
+    const card = e.target.closest(".project-card");
+    if (!card) return;
+    modal.style.display = "flex";
+    modalTitle.innerText = card.querySelector("h3").innerText;
+    modalImg.src = card.querySelector(".project-img").src;
+    modalDesc.innerText = card.querySelector("p").innerText;
+    modalTech.innerText = card.querySelector(".tech").innerText;
+    modalTeam.innerText = card.querySelector(".team").innerText;
+  });
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+</script>
+
+</body>
+</html>
+
+

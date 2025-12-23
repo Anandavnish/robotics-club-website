@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ROBOTICS CLUB</title>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Robotics Club</a>
+
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>`  
+      <a href="about.html">About</a>
+                                                                                                 
+      <a href="about.html">About</a>
+
+    </div>
+  </div>
+</nav>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Robotics Club</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+
+      <a href="about.html" class="active">About</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Robotics Club</div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Achievements</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<!-- REAL ROBOTIC OCTOPUS -->
+<div class="robo-octopus">
+  <svg viewBox="0 0 600 600">
+
+    <!-- BODY (MANTLE) -->
+    <ellipse cx="300" cy="260" rx="85" ry="70" class="octo-body"/>
+    <circle cx="300" cy="260" r="22" class="octo-core"/>
+
+    <!-- TENTACLES -->
+    <g class="tentacle t1">
+      <path d="M300 320 L300 400 L280 480" />
+      <circle cx="300" cy="360" r="8"/>
+      <circle cx="290" cy="440" r="8"/>
+    </g>
+
+    <g class="tentacle t2">
+      <path d="M340 310 L390 380 L420 460" />
+      <circle cx="365" cy="350" r="8"/>
+      <circle cx="405" cy="420" r="8"/>
+    </g>
+
+    <g class="tentacle t3">
+      <path d="M260 310 L210 380 L180 460" />
+      <circle cx="235" cy="350" r="8"/>
+      <circle cx="195" cy="420" r="8"/>
+    </g>
+
+    <g class="tentacle t4">
+      <path d="M360 290 L430 320 L500 360" />
+      <circle cx="395" cy="305" r="8"/>
+      <circle cx="465" cy="340" r="8"/>
+    </g>
+
+    <g class="tentacle t5">
+      <path d="M240 290 L170 320 L100 360" />
+      <circle cx="205" cy="305" r="8"/>
+      <circle cx="135" cy="340" r="8"/>
+    </g>
+
+    <g class="tentacle t6">
+      <path d="M340 260 L400 250 L470 230" />
+      <circle cx="370" cy="255" r="8"/>
+      <circle cx="440" cy="240" r="8"/>
+    </g>
+
+    <g class="tentacle t7">
+      <path d="M260 260 L200 250 L130 230" />
+      <circle cx="230" cy="255" r="8"/>
+      <circle cx="160" cy="240" r="8"/>
+    </g>
+
+    <g class="tentacle t8">
+      <path d="M300 240 L300 180 L300 120" />
+      <circle cx="300" cy="210" r="8"/>
+      <circle cx="300" cy="150" r="8"/>
+    </g>
+
+  </svg>
+</div>
+
+
+<section class="hero">
+  <canvas id="robotCanvas"></canvas>
+  <!-- CUTE ROBOTS -->
+<div class="cute-robot robot-left">
+  <svg viewBox="0 0 200 200">
+    <!-- Head -->
+    <rect x="50" y="20" width="100" height="70" rx="20" fill="#00E5FF"/>
+    <!-- Eyes -->
+    <circle class="eye" cx="80" cy="55" r="6" fill="#020617"/>
+    <circle class="eye" cx="120" cy="55" r="6" fill="#020617"/>
+    <!-- Body -->
+    <rect x="60" y="95" width="80" height="55" rx="15" fill="#2979FF"/>
+    <!-- Wheels -->
+    <circle class="wheel" cx="75" cy="155" r="10" fill="#020617"/>
+    <circle class="wheel" cx="125" cy="155" r="10" fill="#020617"/>
+  </svg>
+</div>
+
+<div class="cute-robot robot-right">
+  <svg viewBox="0 0 200 200">
+   <!-- Head -->
+    <rect x="50" y="20" width="100" height="70" rx="20" fill="#00E5FF"/>
+    <!-- Eyes -->
+    <circle class="eye" cx="80" cy="55" r="6" fill="#020617"/>
+    <circle class="eye" cx="120" cy="55" r="6" fill="#020617"/>
+    <!-- Body -->
+    <rect x="60" y="95" width="80" height="55" rx="15" fill="#2979FF"/>
+    <!-- Wheels -->
+    <circle class="wheel" cx="75" cy="155" r="10" fill="#020617"/>
+    <circle class="wheel" cx="125" cy="155" r="10" fill="#020617"/>
+  </svg>
+</div>
+</div>
+
+  <!-- ROBOT FLEET -->
+<div class="robot robot-1"></div>
+<div class="robot robot-2"></div>
+<div class="robot robot-3"></div>
+<div class="robot robot-4"></div>
+<!-- ROBOT EYE -->
+<g class="robot-eye">
+  <!-- Eye base -->
+  <circle cx="60" cy="40" r="6" fill="black"/>
+
+  <!-- Eyelid -->
+  <rect x="54" y="40" width="12" height="0" fill="black" class="eye-lid"/>
+</g>
+
+<section class="hero">
+
+
+</section>
+
+<div class="club-logo">
+  <img src="images/logo.png" alt="Robotics Club Logo">
+</div>
+
+
+<div class="hero-content">
+  <h1 class="hero-title">Robotics Club</h1>
+  <p class="hero-tagline">Innovate • Build • Automate</p>
+</div>
+
+</section>
+
+
+<!-- QUICK NAVIGATION -->
+<section class="quick-nav" data-aos="fade-up">
+  <h2>Explore Our Club</h2>
+  <div class="nav-cards">
+    <a href="about.html" class="card">About Us</a>
+
+  <a href="events.html" class="card">Events</a>
+
+    <a href="projects.html" class="card">Projects</a>
+
+    <a href="achievements.html" class="card">Achievements</a>
+
+    <a href="team.html" class="card">Team</a>
+
+    <a href="news.html" class="card">News</a>
+    <a href="contact.html" class="card">Contact</a>
+
+  </div>
+  
+</section>
+
+<!-- CLUB HIGHLIGHTS -->
+<section class="highlights">
+  <h2 data-aos="fade-up">Club Highlights</h2>
+  <div class="highlight-boxes">
+    <div class="box" data-aos="zoom-in">🏆 Competitions</div>
+    <div class="box" data-aos="zoom-in">🛠 Workshops</div>
+    <div class="box" data-aos="zoom-in">🤖 Projects</div>
+    <div class="box" data-aos="zoom-in">🚀 Innovation</div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENT -->
+<section class="event" data-aos="fade-right">
+  <h2>Upcoming Event</h2>
+  <p><strong>RoboFest 2026</strong> – National Robotics Competition</p>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievement" data-aos="fade-left">
+  <h2>Recent Achievement</h2>
+  <p>🥇 Winner – State Level Robotics Championship</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Follow Us</p>
+  <div class="social">
+    <span>Instagram</span>
+    <span>LinkedIn</span>
+    <span>YouTube</span>
+  </div>
+  <p>📧 roboticsclub@email.com</p>
+</footer>
+
+
+<!-- JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

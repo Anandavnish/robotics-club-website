@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Robotics Club</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+    .page-title {
+  color: #ffffff;
+}
+
+/* Contact form – themed styling */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  background: #020617;
+  color: #ffffff;
+  border: 1.5px solid #38bdf8;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Placeholder color */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Focus effect */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+/* Submit button */
+.contact-form button {
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  color: #020617;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Button hover */
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+}
+
+/* Success message */
+.form-note {
+  color: #38bdf8;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+
+</style>
+<section class="about-section contact-page">
+  <h1 class="page-title">Contact Us</h1>
+  <p class="page-subtitle">
+    Reach out • Collaborate • Join the Club
+  </p>
+
+  <!-- CONTACT DETAILS -->
+  <div class="about-card">
+    <h2 class="section-heading">Contact Details</h2>
+    <p><strong>Email:</strong> roboticsclub@nitp.ac.in</p>
+    <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
+    <p><strong>Location:</strong> Robotics Lab, Main Academic Building, Room 204</p>
+    <p><strong>Meeting Time:</strong> Every Saturday, 4:00 PM – 6:00 PM</p>
+  </div>
+
+  <!-- MAP SECTION -->
+  <div class="about-card">
+    <h2 class="section-heading">Our Location</h2>
+    <div class="image-placeholder">
+      <p>Google Maps Location (Static Placeholder)</p>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="about-card">
+    <h2 class="section-heading">Send Us a Message</h2>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Subject" required>
+
+      <select required>
+        <option value="">Purpose</option>
+        <option>General Inquiry</option>
+        <option>Join Club</option>
+        <option>Event Question</option>
+        <option>Collaboration</option>
+      </select>
+
+      <textarea rows="4" placeholder="Your Message"></textarea>
+
+      <button type="submit">Submit</button>
+      <p class="form-note">✔ Message submitted successfully (demo)</p>
+    </form>
+  </div>
+
+  <!-- SOCIAL MEDIA -->
+  <div class="about-card">
+    <h2 class="section-heading">Connect With Us</h2>
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <br>
+      <a href="#">LinkedIn</a>
+      <br>
+      <a href="#">GitHub</a>
+      <br>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="about-card">
+    <h2 class="section-heading">FAQs</h2>
+    <ul class="faq-list">
+      <li><strong>How can I join the club?</strong>  
+        <br>Registrations open at the start of each semester.</li>
+
+      <li><strong>Do I need prior experience?</strong>  
+        <br>No, beginners are welcome.</li>
+
+      <li><strong>Are events open to everyone?</strong>  
+        <br>Yes, most workshops and talks are open to all students.</li>
+    </ul>
+  </div>
+
+  <!-- BACK -->
+  <div class="back-home">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+</section>
+
+</body>
+</html>

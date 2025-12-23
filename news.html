@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News | Robotics Club</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== NEWS PAGE STYLES ===== */
+
+    .news-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+      color: #E5E7EB;
+    }
+
+    .news-title {
+      text-align: center;
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .news-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    /* FILTERS */
+    .news-filters {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .news-filters select {
+      padding: 10px 14px;
+      margin: 0 8px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: var(--bg-panel);
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+  /* News filter dropdown — match Projects theme */
+.news-filter select {
+  background: #020617;
+  color: #ffffff;
+  border: 1.5px solid #38bdf8;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover & focus effect */
+.news-filter select:hover,
+.news-filter select:focus {
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+}
+
+/* Dropdown options */
+.news-filter select option {
+  background: #020617;
+  color: #ffffff;
+}
+  /* NEWS ITEM */
+    .news-card {
+      background: var(--bg-panel);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 28px rgba(56,189,248,0.15);
+    }
+    .news-card h3 {
+      color: var(--primary);
+      margin: 0 0 6px 0;
+    }
+    .news-meta {
+      font-size: .95rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .news-summary {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .read-more {
+      text-decoration: none;
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    /* NEWSLETTER */
+    .newsletter-box {
+      margin-top: 50px;
+      padding: 24px;
+      background: var(--bg-panel);
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 0 28px rgba(56,189,248,0.15);
+    }
+    .newsletter-box input[type="email"] {
+      width: 64%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #020617;
+      color: #E5E7EB;
+      margin-right: 8px;
+      outline: none;
+    }
+    .newsletter-box button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      background: var(--primary);
+      color: #020617;
+      font-weight: bold;
+      cursor: pointer;
+    }
+.news-card h3 {
+  color: #38bdf8;   /* blue theme color */
+}
+/* FORCE News dropdown to match Projects style */
+select {
+  background: #020617 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #38bdf8 !important;
+  border-radius: 10px !important;
+  padding: 10px 18px !important;
+  font-size: 15px !important;
+  cursor: pointer;
+  outline: none;
+}
+
+select:hover,
+select:focus {
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6) !important;
+}
+
+select option {
+  background: #020617 !important;
+  color: #ffffff !important;
+}
+
+/* Hide the accidental top-left dropdown ONLY */
+body > select {
+  display: none !important;
+}
+
+  </style>
+</head>
+
+<body>
+
+<select class="news-category">
+<select class="news section">
+
+  <h1 class="news-title">Latest News & Updates</h1>
+  <p class="news-subtitle">Stay updated with club updates & robotics developments</p>
+
+  <!-- CATEGORY FILTERS -->
+  <div class="news-filters">
+    <select id="newsCategory">
+      <option value="all">All Categories</option>
+      <option value="club">Club News</option>
+      <option value="competition">Competition News</option>
+      <option value="tech">Tech Innovations</option>
+      <option value="research">Research Breakthroughs</option>
+    </select>
+  </div>
+
+  <!-- CLUB NEWS -->
+  <div class="news-card" data-cat="club">
+    <h3>Weekly Meeting Summary</h3>
+    <div class="news-meta">Jan 12, 2025 • Source: Club Bulletin</div>
+    <p class="news-summary">
+      This week the club discussed the roadmap for RoboFest 2025 with members reviewing team progress and planning tasks for upcoming workshops and demos.
+    </p>
+    <a href="#" class="read-more">Read More</a>
+  </div>
+
+  <div class="news-card" data-cat="club">
+    <h3>Announcement: New Robotics Lab Tools</h3>
+    <div class="news-meta">Dec 28, 2024 • Source: Club Admin</div>
+    <p class="news-summary">
+      New fabrication and testing tools are now available in the robotics lab. These will help teams prototype faster and test hardware designs with improved accuracy.
+    </p>
+    <a href="#" class="read-more">Read More</a>
+  </div>
+
+  <!-- ROBOTICS INDUSTRY NEWS -->
+  <div class="news-card" data-cat="tech">
+    <h3>Breakthrough in Autonomous Navigation</h3>
+    <div class="news-meta">Dec 18, 2024 • Source: Robotics Today</div>
+    <p class="news-summary">
+      Researchers have released a new algorithm that significantly improves autonomous robot navigation in unstructured environments, outperforming existing solutions by 30%.
+    </p>
+    <a href="#" class="read-more">Read More</a>
+  </div>
+
+  <div class="news-card" data-cat="tech">
+    <h3>New AI Robotics Framework Released</h3>
+    <div class="news-meta">Nov 05, 2024 • Source: AI Robotics Weekly</div>
+    <p class="news-summary">
+      A new open-source AI robotics framework that simplifies integration between perception and control modules has been released, gaining attention from global developers.
+    </p>
+    <a href="#" class="read-more">Read More</a>
+  </div>
+
+  <div class="news-card" data-cat="research">
+    <h3>Research: Soft Robotics Advancements</h3>
+    <div class="news-meta">Oct 21, 2024 • Source: Journal of Robotics</div>
+    <p class="news-summary">
+      Scientists have demonstrated new soft robotic actuators capable of highly adaptive movement. This research enables safer human-robot interaction in medical and service applications.
+    </p>
+    <a href="#" class="read-more">Read More</a>
+  </div>
+
+  <!-- NEWSLETTER SUBSCRIPTION -->
+  <div class="newsletter-box">
+    <h3>Subscribe to our Newsletter</h3>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+  </div>
+
+  <div class="back-home" style="text-align: center; margin-top: 40px;">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+</section>
+
+<script>
+  // FILTER NEWS
+  const newsCategory = document.getElementById("newsCategory");
+  const newsCards = document.querySelectorAll(".news-card");
+
+  newsCategory.addEventListener("change", () => {
+    const value = newsCategory.value;
+    newsCards.forEach(card => {
+      if (value === "all" || card.dataset.cat === value) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+

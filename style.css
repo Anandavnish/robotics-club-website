@@ -1,0 +1,939 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0B0F1A;
+  color: #E5E7EB;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: rgba(11,15,26,0.9);
+  backdrop-filter: blur(10px);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid #1F2937;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00E5FF;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar a {
+  color: #E5E7EB;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #00E5FF;
+  text-shadow: 0 0 8px #00E5FF;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: radial-gradient(circle at top, #111827, #020617);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#robotCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  color: #00E5FF;
+  text-shadow: 0 0 25px rgba(0,229,255,0.6);
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  color: #9CA3AF;
+}
+
+.hero button {
+  margin-top: 30px;
+  padding: 14px 40px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #00E5FF, #2979FF);
+  color: #020617;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.hero button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #22D3EE;
+}
+
+/* QUICK NAV */
+.quick-nav {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.quick-nav h2 {
+  color: #00E5FF;
+}
+
+.nav-cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #111827;
+  padding: 35px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 1px solid #1F2937;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  background: #0B1220;
+  border-color: #00E5FF;
+  box-shadow: 0 0 25px rgba(0,229,255,0.3);
+}
+
+/* HIGHLIGHTS */
+.highlights {
+  padding: 80px 40px;
+  background: radial-gradient(circle at top, #111827, #0B0F1A);
+  text-align: center;
+}
+
+.highlights h2 {
+  color: #00E5FF;
+}
+
+.highlight-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.box {
+  background: #111827;
+  padding: 30px;
+  width: 220px;
+  border-radius: 12px;
+  border: 1px solid #1F2937;
+  transition: 0.3s;
+}
+
+.box:hover {
+  border-color: #2979FF;
+  box-shadow: 0 0 20px rgba(41,121,255,0.4);
+}
+
+/* EVENT & ACHIEVEMENT */
+.event, .achievement {
+  padding: 70px 40px;
+  text-align: center;
+  background: #0B0F1A;
+}
+
+.event h2, .achievement h2 {
+  color: #00E5FF;
+}
+
+/* FOOTER */
+footer {
+  background: #020617;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid #1F2937;
+}
+
+.social span {
+  margin: 0 12px;
+  cursor: pointer;
+  color: #9CA3AF;
+  transition: 0.3s;
+}
+
+.social span:hover {
+  color: #00E5FF;
+  text-shadow: 0 0 10px #00E5FF;
+}
+
+/* ROBOT BASE */
+.robot {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #00E5FF, #020617);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,229,255,0.5);
+  opacity: 0.6;
+}
+
+/* ROBOT DETAILS */
+.robot::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #020617;
+  box-shadow: 0 0 10px #00E5FF inset;
+}
+
+/* ROBOT ANIMATIONS */
+.robot-1 {
+  top: 20%;
+  left: 10%;
+  animation: floatBot 8s ease-in-out infinite;
+}
+
+.robot-2 {
+  top: 65%;
+  left: 20%;
+  animation: floatBot 10s ease-in-out infinite reverse;
+}
+
+.robot-3 {
+  top: 30%;
+  right: 15%;
+  animation: driftBot 14s linear infinite;
+}
+
+.robot-4 {
+  bottom: 15%;
+  right: 25%;
+  animation: driftBot 18s linear infinite reverse;
+}
+
+/* KEYFRAMES */
+@keyframes floatBot {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes driftBot {
+  0% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(40px); opacity: 0.7; }
+  100% { transform: translateX(0); opacity: 0.4; }
+}
+
+/* CUTE ROBOTS */
+.cute-robot {
+  position: absolute;
+  width: 140px;
+  opacity: 0.85;
+  animation: floatCute 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(0,229,255,0.4));
+}
+
+.robot-left {
+  bottom: 12%;
+  left: 8%;
+}
+
+.robot-right {
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+/* FLOATING */
+@keyframes floatCute {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+/* BLINKING EYES */
+.eye {
+  animation: blink 4s infinite;
+  transform-origin: center;
+}
+
+@keyframes blink {
+  0%, 95%, 100% {
+    transform: scaleY(1);
+  }
+  96%, 99% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* MOVING WHEELS */
+
+
+
+.cute-robot {
+  z-index: 2;
+}
+
+.hero-content {
+  z-index: 5;
+}
+
+/* =============================== */
+/* HIGH VISIBILITY ROBOTIC OCTOPUS */
+/* =============================== */
+
+.robo-octopus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 560px;                 /* BIGGER */
+  transform: translate(-50%, -50%);
+  opacity: 0.85;                /* MUCH MORE VISIBLE */
+  z-index: 3;
+  animation: octoFloat 7s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 25px rgba(0,255,255,0.6))
+    drop-shadow(0 0 60px rgba(0,180,255,0.4));
+}
+
+/* ===== CORE ===== */
+.core-shell {
+  fill: #0A0F1E;                /* Dark metal */
+  stroke: var(--primary);
+  stroke-width: 6;              /* THICK */
+}
+
+.core-ring {
+  fill: none;
+  stroke: var(--secondary);
+  stroke-width: 5;
+  stroke-dasharray: 12;
+  animation: rotateCore 10s linear infinite;
+}
+
+.core-lens {
+  fill: var(--primary);
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  animation: lensPulse 2.5s infinite;
+}
+
+/* ===== ARMS (VERY THICK) ===== */
+.arm rect {
+  fill: #1E293B;                /* Steel body */
+  stroke: var(--primary);
+  stroke-width: 4;
+  rx: 10;
+}
+
+.arm circle {
+  fill: var(--secondary);
+  stroke: #FFFFFF;
+  stroke-width: 2;
+}
+
+/* MAKE ARMS LOOK HEAVY */
+.arm {
+  transform-origin: 250px 250px;
+}
+
+/* SERVO MOVEMENT */
+.arm1 { animation: servo 4s ease-in-out infinite; }
+.arm2 { animation: servo 5s ease-in-out infinite reverse; }
+.arm3 { animation: servo 6s ease-in-out infinite; }
+.arm4 { animation: servo 4.5s ease-in-out infinite reverse; }
+.arm5 { animation: servo 6.5s ease-in-out infinite; }
+.arm6 { animation: servo 5.5s ease-in-out infinite reverse; }
+
+/* FLOATING */
+@keyframes octoFloat {
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-20px); }
+}
+
+@keyframes rotateCore {
+  from { transform-origin: center; transform: rotate(0deg); }
+  to { transform-origin: center; transform: rotate(360deg); }
+}
+
+@keyframes lensPulse {
+  0%,100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes servo {
+  50% { transform: rotate(7deg); }
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  border-bottom: 1px solid #1E293B;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #22D3EE;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin-left: 25px;
+  color: #E5E7EB;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #22D3EE;
+}
+
+/* ACTIVE PAGE */
+.nav-links .active {
+  color: #22D3EE;
+}
+
+.nav-links .active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #22D3EE;
+  bottom: -6px;
+  left: 0;
+}
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  border-bottom: 1px solid #1E293B;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #22D3EE;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin-left: 25px;
+  color: #E5E7EB;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #22D3EE;
+}
+
+/* ACTIVE PAGE */
+.nav-links .active {
+  color: #22D3EE;
+}
+
+.nav-links .active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #22D3EE;
+  bottom: -6px;
+  left: 0;
+}
+/* =============================== */
+/* CUTE ROBOTS – UNIFIED BLUE THEME */
+/* =============================== */
+
+.cute-robot svg rect,
+.cute-robot svg body {
+  fill: #1E3A8A; /* DARK BLUE */
+  stroke: #38BDF8; /* SKY BLUE */
+  stroke-width: 2;
+}
+
+.cute-robot svg circle.eye {
+  fill: #38BDF8; /* SKY BLUE EYES */
+}
+
+/* REMOVE ANY ROTATION */
+.cute-robot svg .eye {
+  animation: none !important;
+}
+
+/* OPTIONAL: subtle idle movement */
+.cute-robot {
+  animation: robotBob 4s ease-in-out infinite;
+}
+
+@keyframes robotBob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+/* =============================== */
+/* LOGO SIDE ROBOT – BLUE MATCH */
+/* =============================== */
+
+.logo-robot svg rect,
+.logo-robot svg path {
+  fill: #1E40AF;     /* ENGINEERING BLUE */
+  stroke: #38BDF8;   /* SKY BLUE */
+  stroke-width: 2;
+}
+
+.logo-robot svg circle {
+  fill: #38BDF8;
+}
+
+/* Make it subtle */
+.logo-robot {
+  opacity: 0.9;
+}
+/* =============================== */
+/* CUTE ROBOT – ATTRACTIVE BLUE */
+/* =============================== */
+
+.cute-robot svg rect,
+.cute-robot svg body {
+  fill: linear-gradient(135deg, #38BDF8, #0EA5E9);
+  stroke: #1E3A8A;
+  stroke-width: 2.5;
+}
+
+/* If gradient doesn't apply (SVG limitation fallback) */
+.cute-robot svg rect {
+  fill: #0EA5E9; /* Electric Blue */
+}
+
+.cute-robot svg circle.eye {
+  fill: #67E8F9; /* Soft Cyan */
+  filter: drop-shadow(0 0 6px rgba(103,232,249,0.8));
+}
+
+/* Remove all eye rotation */
+.cute-robot svg .eye {
+  animation: none !important;
+}
+
+/* Subtle friendly movement */
+.cute-robot {
+  animation: cuteBob 3.5s ease-in-out infinite;
+}
+
+@keyframes cuteBob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+/* =============================== */
+/* CUTE ROBOT – BLACK EYE + WHEEL */
+/* =============================== */
+
+/* BODY (keep attractive blue) */
+.cute-robot svg rect,
+.cute-robot svg body {
+  fill: #0EA5E9;        /* Electric Blue */
+  stroke: #1E3A8A;     /* Deep Blue */
+  stroke-width: 2.5;
+}
+
+/* EYE + WHEEL – PURE BLACK */
+.cute-robot svg circle.eye,
+.cute-robot svg circle.wheel {
+  fill: #000000;       /* BLACK */
+  stroke: #000000;
+  stroke-width: 1;
+}
+
+/* ENSURE NO ANIMATION */
+.cute-robot svg .eye,
+.cute-robot svg .wheel {
+  animation: none !important;
+}
+
+/* SUBTLE FRIENDLY MOTION (OPTIONAL) */
+.cute-robot {
+  animation: cuteBob 3.5s ease-in-out infinite;
+}
+
+@keyframes cuteBob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+/* =============================== */
+/* EXPLORE MENU – ADVANCED HOVER FLOW */
+/* =============================== */
+
+.explore {
+  position: relative;
+}
+
+/* MENU CONTAINER */
+.explore-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+/* SHOW ON HOVER */
+.explore:hover .explore-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* MENU ITEMS */
+.explore-menu a {
+  display: block;
+  transform: translateX(-20px);
+  opacity: 0;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+/* STAGGERED LEFT → RIGHT FLOW */
+.explore:hover .explore-menu a:nth-child(1) {
+  transition-delay: 0.05s;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.explore:hover .explore-menu a:nth-child(2) {
+  transition-delay: 0.1s;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.explore:hover .explore-menu a:nth-child(3) {
+  transition-delay: 0.15s;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.explore:hover .explore-menu a:nth-child(4) {
+  transition-delay: 0.2s;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* =============================== */
+/* EXPLORE CLUB – ADVANCED MOTION */
+/* =============================== */
+
+/* Section entrance (top → bottom) */
+.quick-nav {
+  overflow: hidden;
+}
+
+/* Cards container */
+.nav-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Base card state */
+.nav-cards .card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Alternate horizontal entry directions */
+.nav-cards .card:nth-child(odd) {
+  transform: translateX(-30px);
+}
+
+.nav-cards .card:nth-child(even) {
+  transform: translateX(30px);
+}
+
+/* When section is visible (AOS active) */
+.quick-nav.aos-animate .card {
+  transform: translateX(0);
+}
+
+/* Hover interaction – same look, more depth */
+.nav-cards .card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* =============================== */
+/* EXPLORE CLUB – BIG & ATTRACTIVE */
+/* =============================== */
+
+/* Section spacing */
+.quick-nav {
+  padding: 80px 5%;
+}
+
+/* Title bigger */
+.quick-nav h2 {
+  font-size: 2.6rem;
+  margin-bottom: 50px;
+}
+
+/* Cards layout */
+.nav-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* Card base (BIG) */
+.nav-cards .card {
+  min-height: 140px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Hover = premium lift */
+.nav-cards .card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+.nav-cards .card:hover {
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.3),
+    0 0 25px rgba(14,165,233,0.4);
+}
+/* =============================== */
+/* EXPLORE CLUB – BALANCED SIZE */
+/* =============================== */
+
+/* Title slight reduction */
+.quick-nav h2 {
+  font-size: 2.3rem;
+  margin-bottom: 40px;
+}
+
+/* Cards grid spacing */
+.nav-cards {
+  gap: 24px;
+}
+
+/* Card size adjusted */
+.nav-cards .card {
+  min-height: 115px;      /* reduced from 140 */
+  font-size: 1.15rem;    /* reduced from 1.3 */
+  font-weight: 600;
+  border-radius: 16px;
+}
+
+/* Hover stays premium */
+.nav-cards .card:hover {
+  transform: translateY(-8px) scale(1.04);
+}
+
+
+.nav-cards a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ===== ABOUT PAGE STYLES ===== */
+
+.about-section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 20px;
+  color: #e5e7eb;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #38bdf8;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #94a3b8;
+  letter-spacing: 2px;
+}
+
+.about-card {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+}
+
+.about-card h2,
+.about-card h3 {
+  color: #38bdf8;
+  margin-bottom: 16px;
+}
+
+/* GRID SYSTEMS */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* MINI CARDS */
+.mini-card {
+  background: linear-gradient(135deg, #0ea5e9, #1e3a8a);
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+}
+
+/* IMAGE PLACEHOLDERS */
+.image-card {
+  height: 220px;
+  border: 2px dashed #38bdf8;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+/* TIMELINE */
+.timeline {
+  border-left: 3px solid #38bdf8;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+}
+
+.timeline-item span {
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+/* BACK BUTTON */
+.back-home {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.back-home a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* GLOW EFFECT */
+.glow {
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+/* Robotics Club Logo Styling */
+.club-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.club-logo img {
+  width: 160px;
+  max-width: 70%;
+  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8));
+  transition: transform 0.4s ease;
+}
+
+.club-logo img:hover {
+  transform: scale(1.05);
+}
