@@ -14,7 +14,7 @@ body {
 .navbar {
   position: fixed;
   width: 100%;
-  background: rgba(11,15,26,0.9);
+  background: rgba(11, 15, 26, 0.9);
   backdrop-filter: blur(10px);
   padding: 15px 40px;
   display: flex;
@@ -75,7 +75,7 @@ body {
 .hero h1 {
   font-size: 4rem;
   color: #00E5FF;
-  text-shadow: 0 0 25px rgba(0,229,255,0.6);
+  text-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
 }
 
 .hero p {
@@ -114,7 +114,7 @@ body {
 .nav-cards {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
 }
 
@@ -131,7 +131,7 @@ body {
   transform: translateY(-12px);
   background: #0B1220;
   border-color: #00E5FF;
-  box-shadow: 0 0 25px rgba(0,229,255,0.3);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
 }
 
 /* HIGHLIGHTS */
@@ -164,17 +164,19 @@ body {
 
 .box:hover {
   border-color: #2979FF;
-  box-shadow: 0 0 20px rgba(41,121,255,0.4);
+  box-shadow: 0 0 20px rgba(41, 121, 255, 0.4);
 }
 
 /* EVENT & ACHIEVEMENT */
-.event, .achievement {
+.event,
+.achievement {
   padding: 70px 40px;
   text-align: center;
   background: #0B0F1A;
 }
 
-.event h2, .achievement h2 {
+.event h2,
+.achievement h2 {
   color: #00E5FF;
 }
 
@@ -205,7 +207,7 @@ footer {
   height: 60px;
   background: radial-gradient(circle, #00E5FF, #020617);
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,229,255,0.5);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
   opacity: 0.6;
 }
 
@@ -249,15 +251,34 @@ footer {
 
 /* KEYFRAMES */
 @keyframes floatBot {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes driftBot {
-  0% { transform: translateX(0); opacity: 0.4; }
-  50% { transform: translateX(40px); opacity: 0.7; }
-  100% { transform: translateX(0); opacity: 0.4; }
+  0% {
+    transform: translateX(0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateX(40px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 0.4;
+  }
 }
 
 /* CUTE ROBOTS */
@@ -266,7 +287,7 @@ footer {
   width: 140px;
   opacity: 0.85;
   animation: floatCute 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 18px rgba(0,229,255,0.4));
+  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.4));
 }
 
 .robot-left {
@@ -282,9 +303,17 @@ footer {
 
 /* FLOATING */
 @keyframes floatCute {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* BLINKING EYES */
@@ -294,10 +323,15 @@ footer {
 }
 
 @keyframes blink {
-  0%, 95%, 100% {
+
+  0%,
+  95%,
+  100% {
     transform: scaleY(1);
   }
-  96%, 99% {
+
+  96%,
+  99% {
     transform: scaleY(0.1);
   }
 }
@@ -322,21 +356,24 @@ footer {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 560px;                 /* BIGGER */
+  width: 560px;
+  /* BIGGER */
   transform: translate(-50%, -50%);
-  opacity: 0.85;                /* MUCH MORE VISIBLE */
+  opacity: 0.85;
+  /* MUCH MORE VISIBLE */
   z-index: 3;
   animation: octoFloat 7s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 25px rgba(0,255,255,0.6))
-    drop-shadow(0 0 60px rgba(0,180,255,0.4));
+    drop-shadow(0 0 25px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 60px rgba(0, 180, 255, 0.4));
 }
 
 /* ===== CORE ===== */
 .core-shell {
-  fill: #0A0F1E;                /* Dark metal */
+  fill: #0A0F1E;
+  /* Dark metal */
   stroke: var(--primary);
-  stroke-width: 6;              /* THICK */
+  stroke-width: 6;
+  /* THICK */
 }
 
 .core-ring {
@@ -356,7 +393,8 @@ footer {
 
 /* ===== ARMS (VERY THICK) ===== */
 .arm rect {
-  fill: #1E293B;                /* Steel body */
+  fill: #1E293B;
+  /* Steel body */
   stroke: var(--primary);
   stroke-width: 4;
   rx: 10;
@@ -374,31 +412,71 @@ footer {
 }
 
 /* SERVO MOVEMENT */
-.arm1 { animation: servo 4s ease-in-out infinite; }
-.arm2 { animation: servo 5s ease-in-out infinite reverse; }
-.arm3 { animation: servo 6s ease-in-out infinite; }
-.arm4 { animation: servo 4.5s ease-in-out infinite reverse; }
-.arm5 { animation: servo 6.5s ease-in-out infinite; }
-.arm6 { animation: servo 5.5s ease-in-out infinite reverse; }
+.arm1 {
+  animation: servo 4s ease-in-out infinite;
+}
+
+.arm2 {
+  animation: servo 5s ease-in-out infinite reverse;
+}
+
+.arm3 {
+  animation: servo 6s ease-in-out infinite;
+}
+
+.arm4 {
+  animation: servo 4.5s ease-in-out infinite reverse;
+}
+
+.arm5 {
+  animation: servo 6.5s ease-in-out infinite;
+}
+
+.arm6 {
+  animation: servo 5.5s ease-in-out infinite reverse;
+}
 
 /* FLOATING */
 @keyframes octoFloat {
-  0%,100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-20px);
+  }
 }
 
 @keyframes rotateCore {
-  from { transform-origin: center; transform: rotate(0deg); }
-  to { transform-origin: center; transform: rotate(360deg); }
+  from {
+    transform-origin: center;
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform-origin: center;
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes lensPulse {
-  0%,100% { opacity: 0.6; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes servo {
-  50% { transform: rotate(7deg); }
+  50% {
+    transform: rotate(7deg);
+  }
 }
 
 /* NAVBAR */
@@ -453,6 +531,7 @@ footer {
   bottom: -6px;
   left: 0;
 }
+
 /* NAVBAR */
 .navbar {
   position: fixed;
@@ -505,19 +584,23 @@ footer {
   bottom: -6px;
   left: 0;
 }
+
 /* =============================== */
 /* CUTE ROBOTS – UNIFIED BLUE THEME */
 /* =============================== */
 
 .cute-robot svg rect,
 .cute-robot svg body {
-  fill: #1E3A8A; /* DARK BLUE */
-  stroke: #38BDF8; /* SKY BLUE */
+  fill: #1E3A8A;
+  /* DARK BLUE */
+  stroke: #38BDF8;
+  /* SKY BLUE */
   stroke-width: 2;
 }
 
 .cute-robot svg circle.eye {
-  fill: #38BDF8; /* SKY BLUE EYES */
+  fill: #38BDF8;
+  /* SKY BLUE EYES */
 }
 
 /* REMOVE ANY ROTATION */
@@ -531,17 +614,27 @@ footer {
 }
 
 @keyframes robotBob {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
+
 /* =============================== */
 /* LOGO SIDE ROBOT – BLUE MATCH */
 /* =============================== */
 
 .logo-robot svg rect,
 .logo-robot svg path {
-  fill: #1E40AF;     /* ENGINEERING BLUE */
-  stroke: #38BDF8;   /* SKY BLUE */
+  fill: #1E40AF;
+  /* ENGINEERING BLUE */
+  stroke: #38BDF8;
+  /* SKY BLUE */
   stroke-width: 2;
 }
 
@@ -553,6 +646,7 @@ footer {
 .logo-robot {
   opacity: 0.9;
 }
+
 /* =============================== */
 /* CUTE ROBOT – ATTRACTIVE BLUE */
 /* =============================== */
@@ -566,12 +660,14 @@ footer {
 
 /* If gradient doesn't apply (SVG limitation fallback) */
 .cute-robot svg rect {
-  fill: #0EA5E9; /* Electric Blue */
+  fill: #0EA5E9;
+  /* Electric Blue */
 }
 
 .cute-robot svg circle.eye {
-  fill: #67E8F9; /* Soft Cyan */
-  filter: drop-shadow(0 0 6px rgba(103,232,249,0.8));
+  fill: #67E8F9;
+  /* Soft Cyan */
+  filter: drop-shadow(0 0 6px rgba(103, 232, 249, 0.8));
 }
 
 /* Remove all eye rotation */
@@ -585,9 +681,17 @@ footer {
 }
 
 @keyframes cuteBob {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
+
 /* =============================== */
 /* CUTE ROBOT – BLACK EYE + WHEEL */
 /* =============================== */
@@ -595,15 +699,18 @@ footer {
 /* BODY (keep attractive blue) */
 .cute-robot svg rect,
 .cute-robot svg body {
-  fill: #0EA5E9;        /* Electric Blue */
-  stroke: #1E3A8A;     /* Deep Blue */
+  fill: #0EA5E9;
+  /* Electric Blue */
+  stroke: #1E3A8A;
+  /* Deep Blue */
   stroke-width: 2.5;
 }
 
 /* EYE + WHEEL – PURE BLACK */
 .cute-robot svg circle.eye,
 .cute-robot svg circle.wheel {
-  fill: #000000;       /* BLACK */
+  fill: #000000;
+  /* BLACK */
   stroke: #000000;
   stroke-width: 1;
 }
@@ -620,9 +727,17 @@ footer {
 }
 
 @keyframes cuteBob {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
+
 /* =============================== */
 /* EXPLORE MENU – ADVANCED HOVER FLOW */
 /* =============================== */
@@ -772,11 +887,13 @@ footer {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
 }
+
 .nav-cards .card:hover {
   box-shadow:
-    0 18px 40px rgba(0,0,0,0.3),
-    0 0 25px rgba(14,165,233,0.4);
+    0 18px 40px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(14, 165, 233, 0.4);
 }
+
 /* =============================== */
 /* EXPLORE CLUB – BALANCED SIZE */
 /* =============================== */
@@ -794,8 +911,10 @@ footer {
 
 /* Card size adjusted */
 .nav-cards .card {
-  min-height: 115px;      /* reduced from 140 */
-  font-size: 1.15rem;    /* reduced from 1.3 */
+  min-height: 115px;
+  /* reduced from 140 */
+  font-size: 1.15rem;
+  /* reduced from 1.3 */
   font-weight: 600;
   border-radius: 16px;
 }
@@ -936,4 +1055,29 @@ footer {
 
 .club-logo img:hover {
   transform: scale(1.05);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 30px;
+    /* Increased from 15px */
+    padding-bottom: 20px;
+    /* Added padding for breathing room */
+  }
+
+  .nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Increased from 15px */
+  }
+
+  .nav-links a {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
 }
