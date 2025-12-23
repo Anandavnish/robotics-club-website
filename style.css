@@ -188,14 +188,14 @@ footer {
   border-top: 1px solid #1F2937;
 }
 
-.social span {
+.social a {
   margin: 0 12px;
-  cursor: pointer;
+  text-decoration: none;
   color: #9CA3AF;
   transition: 0.3s;
 }
 
-.social span:hover {
+.social a:hover {
   color: #00E5FF;
   text-shadow: 0 0 10px #00E5FF;
 }
