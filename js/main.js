@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Show success message
                     if (subscriptionSuccess) {
                         subscriptionSuccess.style.display = 'block';
-                        subscriptionSuccess.textContent = 'that you have been sucessfly subscribed';
+                        subscriptionSuccess.textContent = 'Thank you for subscribing! You have been successfully added to our newsletter.';
 
                         // Hide message after 5 seconds
                         setTimeout(() => {
