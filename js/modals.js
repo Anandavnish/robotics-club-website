@@ -306,29 +306,105 @@ document.addEventListener('DOMContentLoaded', function () {
             openModal(title, content, footer);
         });
     });
-
-    // ===================================
-    // REGISTRATION FORM SUBMISSION
-    // ===================================
-    window.submitRegistration = function (eventName) {
-        // In production, this would send data to backend API
-        // For now, show success message
-
-        const form = document.getElementById('registrationForm');
-        if (form.checkValidity()) {
-            closeModal();
-            showNotification(`Registration successful for ${eventName}! We'll contact you soon.`, 'success');
-
-            // Future API call would be here:
-            // fetch('/api/events/register', {
-            //     method: 'POST',
-            //     body: JSON.stringify(formData)
-            // })
-        } else {
-            form.reportValidity();
-        }
-    };
 });
+
+// ===================================
+// REGISTRATION FORM SUBMISSION (GLOBAL)
+// ===================================
+window.submitRegistration = function (eventName) {
+    const form = document.getElementById('registrationForm');
+    if (!form) return;
+
+    // Gets inputs by index since they don't have IDs
+    const inputs = form.querySelectorAll('input');
+    const nameInput = inputs[0];
+    const emailInput = inputs[1];
+    const phoneInput = inputs[2];
+    const reasonInput = form.querySelector('textarea');
+
+    // HTML5 Validation Check
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    // Custom Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // Clean phone number (remove non-digits) and check length
+    const cleanPhone = phoneInput.value.replace(/\D/g, '');
+    if (cleanPhone.length !== 10) {
+        alert(`Please enter a valid 10-digit phone number. (Current: ${cleanPhone.length})`);
+        return;
+    }
+
+    if (reasonInput.value.trim().length < 5) {
+        alert("Please provide a reason with at least 5 characters.");
+        return;
+    }
+
+    // If validation passes
+    closeModal();
+    showNotification(`Registration successful for ${eventName}! We'll contact you soon.`);
+    console.log(`Registered for ${eventName}:`, {
+        name: nameInput.value,
+        email: emailInput.value,
+        phone: cleanPhone,
+        reason: reasonInput.value
+    });
+};
+
+// Notification Helper (GLOBAL)
+window.showNotification = function (message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--secondary-bg);
+        color: var(--success-cyan);
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        border: 1px solid var(--success-cyan);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        z-index: 10002;
+        animation: slideInRight 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    `;
+
+    notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+    document.body.appendChild(notification);
+
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        notification.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                notification.remove();
+            }
+        }, 300);
+    }, 5000);
+};
+
+// Add animation styles for notification
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+`;
+document.head.appendChild(styleSheet);
 
 // ===================================
 // FUTURE API INTEGRATION NOTES
