@@ -210,6 +210,107 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 30); // Interval time
     }
+    // ===================================
+    // NEWSLETTER SUBSCRIPTION
+    // ===================================
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterEmail = document.getElementById('newsletterEmail');
+    const subscriptionSuccess = document.getElementById('subscriptionSuccess');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (newsletterEmail.value) {
+                // Simulate API call
+                const submitBtn = this.querySelector('button');
+                const originalText = submitBtn.textContent;
+
+                submitBtn.textContent = 'Subscribing...';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    // Reset form
+                    newsletterForm.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+
+                    // Show success message
+                    if (subscriptionSuccess) {
+                        subscriptionSuccess.style.display = 'block';
+                        subscriptionSuccess.textContent = 'that you have been sucessfly subscribed';
+
+                        // Hide message after 5 seconds
+                        setTimeout(() => {
+                            subscriptionSuccess.style.display = 'none';
+                        }, 5000);
+                    }
+                }, 1500);
+            }
+        });
+    }
+
+    // ===================================
+    // CONTACT FORM VALIDATION
+    // ===================================
+    const contactForm = document.getElementById('contactForm');
+    const contactSuccess = document.getElementById('contactSuccess');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const phoneInput = document.getElementById('phone');
+            const messageInput = document.getElementById('message');
+            const phoneValue = phoneInput.value.replace(/\D/g, '');
+            const messageValue = messageInput.value.trim();
+
+            let isValid = true;
+            let errorMessage = '';
+
+            // Validate Phone (10 digits) if provided
+            if (phoneInput.value && phoneValue.length !== 10) {
+                isValid = false;
+                errorMessage = 'Please enter a valid 10-digit phone number.';
+                alert(errorMessage); // Simple alert for now, could be inline
+                return;
+            }
+
+            // Validate Message (min 5 chars)
+            if (messageValue.length < 5) {
+                isValid = false;
+                errorMessage = 'Message must be at least 5 characters long.';
+                alert(errorMessage);
+                return;
+            }
+
+            if (isValid) {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+
+                // Simulate API call
+                setTimeout(() => {
+                    contactForm.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+
+                    if (contactSuccess) {
+                        contactSuccess.style.display = 'block';
+                        contactSuccess.textContent = 'Message Sent Successfully!';
+
+                        // Auto-hide after 5 seconds
+                        setTimeout(() => {
+                            contactSuccess.style.display = 'none';
+                        }, 5000);
+                    }
+                }, 1500);
+            }
+        });
+    }
+
 });
 
 // ===================================

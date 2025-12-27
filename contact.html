@@ -157,6 +157,10 @@
                                 style="color: var(--text-gray); font-size: 0.85rem; margin-top: 1rem; text-align: center;">
                                 * Required fields. We respect your privacy and will never share your information.
                             </p>
+                            <!-- Contact Success Message -->
+                            <p id="contactSuccess"
+                                style="display: none; color: var(--success-cyan); margin-top: 1rem; font-weight: bold; text-align: center;">
+                            </p>
                         </form>
                     </div>
                 </div>
@@ -368,27 +372,6 @@
     <script src="./js/main.js"></script>
     <script src="./js/filters.js"></script>
     <script src="./js/modals.js"></script>
-
-    <script>
-        // Contact Form Submission Handler
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // In production, this would send data to backend API
-            // For now, show success message
-            showNotification('Thank you for contacting us! We will get back to you within 24-48 hours.', 'success');
-
-            // Reset form
-            this.reset();
-
-            // Future API call would be here:
-            // const formData = new FormData(this);
-            // fetch('/api/contact', {
-            //     method: 'POST',
-            //     body: formData
-            // })
-        });
-    </script>
 </body>
 
 </html>

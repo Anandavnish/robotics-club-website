@@ -169,13 +169,17 @@
                         Get the latest robotics news, club updates, and event notifications delivered to your inbox
                         every week.
                     </p>
-                    <form style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;">
-                        <input type="email" class="form-input" placeholder="Enter your email" required style="flex: 1;">
+                    <form id="newsletterForm" style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;">
+                        <input type="email" id="newsletterEmail" class="form-input" placeholder="Enter your email"
+                            required style="flex: 1;">
                         <button type="submit" class="btn btn-primary">Subscribe</button>
                     </form>
                     <p style="color: var(--text-gray); font-size: 0.85rem; margin-top: 1rem;">
                         * We respect your privacy. Unsubscribe anytime.
                     </p>
+                    <!-- Success Message Container -->
+                    <p id="subscriptionSuccess"
+                        style="display: none; color: var(--success-cyan); margin-top: 1rem; font-weight: bold;"></p>
                 </div>
             </div>
         </section>
