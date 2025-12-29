@@ -60,15 +60,155 @@
     background: var(--secondary-bg);
     border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
     height: 100%;
 }
 
+/* Moving Light Effect for .card (Permanent) */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3000px;
+    height: 3000px;
+    background: conic-gradient(transparent 240deg,
+            var(--success-cyan) 300deg,
+            transparent 360deg);
+    transform: translate(-50%, -50%);
+    animation: border-flow 4s linear infinite;
+    z-index: -2;
+    opacity: 1;
+}
+
+/* Inner Background */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--secondary-bg);
+    border-radius: 11px;
+    z-index: -1;
+}
+
 .card:hover {
-    border-color: var(--card-border);
     transform: translateY(-4px);
     box-shadow: 0 8px 30px var(--shadow-glow);
+    border-color: transparent;
+}
+
+/* ===================================
+   CARD 2 (Permanent Moving Light)
+   =================================== */
+.card2 {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid transparent !important;
+    /* No default border needed as light covers it, but keeps sizing */
+    background: var(--secondary-bg);
+    /* Fallback */
+    border-radius: inherit;
+    /* Attempt to inherit */
+}
+
+/* Ensure card2 has border-radius if not inherited or set on element */
+.card2:not([style*="border-radius"]) {
+    border-radius: 12px;
+}
+
+.card2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3000px;
+    /* Larger size for zero glitch */
+    height: 3000px;
+    background: conic-gradient(transparent 240deg,
+            var(--success-cyan) 300deg,
+            transparent 360deg);
+    transform: translate(-50%, -50%);
+    animation: border-flow 4s linear infinite;
+    z-index: -2;
+    opacity: 1;
+    /* Always visible */
+}
+
+.card2::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--secondary-bg);
+    border-radius: inherit;
+    /* Match parent radius */
+    z-index: -1;
+}
+
+/* Fix for specific border-radius on pseudo-elements if needed */
+.filter-btn.card2::after {
+    border-radius: 23px;
+    /* 25px - 2px approx */
+}
+
+
+/* ===================================
+   CARD PILL (For Pill-shaped Buttons)
+   =================================== */
+.card-pill {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid transparent !important;
+    background: var(--secondary-bg);
+    border-radius: 50px !important;
+    /* Force pill shape */
+}
+
+.card-pill::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: conic-gradient(transparent 240deg,
+            var(--success-cyan) 300deg,
+            transparent 360deg);
+    transform: translate(-50%, -50%);
+    animation: border-flow 4s linear infinite;
+    z-index: -2;
+    opacity: 1;
+}
+
+.card-pill::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--secondary-bg);
+    border-radius: 50px;
+    z-index: -1;
+}
+
+
+
+.card-pill.active,
+.card-pill:hover {
+    color: var(--success-cyan) !important;
+}
+
+@keyframes border-flow {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .card-img {
